@@ -1,0 +1,72 @@
+{
+  "manifest_version": 3,
+  "name": "Instagram Reel Slider",
+  "version": "1.0.0",
+  "description": "Brings back the video scrubber/progress slider on Instagram Reels and videos.",
+  "author": "Your Name",
+  "homepage_url": "https://github.com/yourusername/instagram-reel-slider",
+  "icons": {
+    "16": "icons/16.png",
+    "32": "icons/32.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.instagram.com/*"],
+      "js": ["content/content.js"],
+      "css": ["content/styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "background/background.js"
+  },
+  "permissions": ["activeTab"],
+  "host_permissions": ["https://www.instagram.com/*"],
+  "commands": {
+    "play-pause": {
+      "suggested_key": {
+        "default": "Alt+K",
+        "mac": "Alt+K"
+      },
+      "description": "Play or pause the current video"
+    },
+    "seek-backward": {
+      "suggested_key": {
+        "default": "Alt+Left",
+        "mac": "Alt+Left"
+      },
+      "description": "Seek backward 5 seconds"
+    },
+    "seek-forward": {
+      "suggested_key": {
+        "default": "Alt+Right",
+        "mac": "Alt+Right"
+      },
+      "description": "Seek forward 5 seconds"
+    },
+    "speed-toggle": {
+      "suggested_key": {
+        "default": "Alt+S",
+        "mac": "Alt+S"
+      },
+      "description": "Cycle playback speed (0.25x - 2x)"
+    },
+    "volume-down": {
+      "description": "Decrease volume by 10%"
+    },
+    "volume-up": {
+      "description": "Increase volume by 10%"
+    },
+    "speed-down": {
+      "description": "Decrease playback speed"
+    },
+    "speed-up": {
+      "description": "Increase playback speed"
+    },
+    "speed-reset": {
+      "description": "Reset playback speed to 1x"
+    }
+  }
+}
