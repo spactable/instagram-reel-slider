@@ -12,6 +12,55 @@
 (function () {
   'use strict';
 
+  // ---- Styles (insert once) ----
+  if (!document.head.querySelector('#insta-custom-seek-styles')) {
+    const style = document.createElement('style');
+    style.id = 'insta-custom-seek-styles';
+    style.textContent = `
+      .custom-seek-container {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        z-index: 9999;
+        background: rgba(255, 255, 255, 0.06);
+        cursor: pointer;
+        transition: height 0.15s ease-in-out, opacity 0.15s;
+        opacity: 0.8;
+        pointer-events: auto;
+      }
+      .custom-seek-container:hover {
+        height: 10px;
+        opacity: 1;
+      }
+      .custom-slider {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        outline: none;
+        margin: 0;
+        cursor: pointer;
+        display: block;
+        pointer-events: auto;
+      }
+      .custom-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 0;
+        height: 0;
+      }
+      .custom-slider::-moz-range-thumb {
+        width: 0;
+        height: 0;
+        border: 0;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
   // Playback speed options (0.25x to 2x)
   const PLAYBACK_SPEEDS = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
 
